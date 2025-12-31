@@ -132,7 +132,7 @@ downloadBtn.addEventListener('click', async () => {
     });
 
     if (response.ok) {
-      alert('Photo sent successfully! 🎉');
+      alert('Can go to counter For Rm 10 per pieces');
       downloadBtn.textContent = 'Sent!';
       setTimeout(() => window.location.href = 'index.html', 1500);
     } else {
