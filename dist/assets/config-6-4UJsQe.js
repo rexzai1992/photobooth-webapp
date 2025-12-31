@@ -1,0 +1,1 @@
+const I="https://vxxfvgezmflpnhipfggq.supabase.co",c="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ4eGZ2Z2V6bWZscG5oaXBmZ2dxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcxNTc2OTcsImV4cCI6MjA4MjczMzY5N30.MW4D1nfHRVe_G5EOAZPZTKlFH_TpQhr5cW62VQvwVrU";export{I as S,c as a};
