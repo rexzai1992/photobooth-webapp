@@ -13,7 +13,10 @@ const canvas = document.getElementById('finalCanvas'),
       addBubbleBtn = document.getElementById('addBubble'),
       downloadBtn = document.getElementById('downloadBtn'),
       homeBtn = document.getElementById('homeBtn'),
-      resetBtn = document.getElementById('reset');
+      resetBtn = document.getElementById('reset'),
+      confirmPopup = document.getElementById('confirmPopup'),
+      confirmOk = document.getElementById('confirmOk'),
+      confirmCancel = document.getElementById('confirmCancel');
 
 // sticker state
 let stickers = [], dragOffset = { x: 0, y: 0 }, selectedSticker = null;
@@ -113,6 +116,21 @@ addBubbleBtn.addEventListener('click', () => { addSticker(bubbleImages[bubbleInd
 // reset
 resetBtn.addEventListener('click', () => { stickers = []; drawCanvas(); });
 
+// show confirm popup
+function showConfirmPopup() {
+  confirmPopup.classList.add('show');
+}
+
+// popup buttons
+confirmOk.addEventListener('click', () => {
+  confirmPopup.classList.remove('show');
+  window.location.href = 'index.html';
+});
+
+confirmCancel.addEventListener('click', () => {
+  confirmPopup.classList.remove('show');
+});
+
 // upload to supabase
 downloadBtn.addEventListener('click', async () => {
   downloadBtn.disabled = true;
@@ -133,10 +151,7 @@ downloadBtn.addEventListener('click', async () => {
 
     if (response.ok) {
       downloadBtn.textContent = 'Sent!';
-      const confirmed = confirm('Can go to counter For Rm 10 per pieces');
-      if (confirmed) {
-        window.location.href = 'index.html';
-      }
+      showConfirmPopup();
     } else {
       throw new Error('Upload failed');
     }
