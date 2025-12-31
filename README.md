@@ -5,8 +5,9 @@ An underwater-themed photobooth web application built with vanilla HTML, CSS, an
 ## Features
 - Live camera preview and photo capture
 - Upload custom photos
-- Add + drag and drop stickers 
-- Download your decorated photo strip
+- Add + drag and drop stickers
+- Send photos to admin gallery for printing
+- Admin page to view, download, and manage all uploaded photos
 - Fully responsive design
 
 ## Demo
@@ -26,6 +27,14 @@ An underwater-themed photobooth web application built with vanilla HTML, CSS, an
 2. Open the URL shown in the terminal (usually http://localhost:3000) in a browser.
 
 3. Allow camera access when prompted.
+
+### Admin Access
+To view and download uploaded photos:
+1. Navigate to `/admin.html` in your browser
+2. Login with your Supabase credentials
+3. View all uploaded photos, download them, and mark them as printed
+
+Photos are stored in a Supabase database and can be accessed from any device.
 
 ## License
 

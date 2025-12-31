@@ -111,9 +111,36 @@ addBubbleBtn.addEventListener('click', () => { addSticker(bubbleImages[bubbleInd
 // reset
 resetBtn.addEventListener('click', () => { stickers = []; drawCanvas(); });
 
-// download
-downloadBtn.addEventListener('click', () => {
-  canvas.toBlob(blob => { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'fish-photobooth.png'; a.click(); }, 'image/png');
+// upload to supabase
+downloadBtn.addEventListener('click', async () => {
+  downloadBtn.disabled = true;
+  downloadBtn.textContent = 'Sending...';
+
+  try {
+    const imageData = canvas.toDataURL('image/png');
+
+    const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/photos`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': import.meta.env.VITE_SUPABASE_ANON_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ image_data: imageData })
+    });
+
+    if (response.ok) {
+      alert('Photo sent successfully! 🎉');
+      downloadBtn.textContent = 'Sent!';
+      setTimeout(() => window.location.href = 'index.html', 1500);
+    } else {
+      throw new Error('Upload failed');
+    }
+  } catch (error) {
+    alert('Failed to send photo. Please try again.');
+    downloadBtn.disabled = false;
+    downloadBtn.textContent = 'Send';
+  }
 });
 
 // home

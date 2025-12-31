@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Photo Gallery</title>
+  <link rel="icon" href="Assets/fish-photobooth/favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="StyleSheets/admin.css" />
+</head>
+<body>
+  <div class="logo">
+    <img src="Assets/fish-photobooth/logo-new.png" alt="Logo">
+  </div>
+
+  <div class="admin-container">
+    <h1>Photo Gallery</h1>
+    <p class="subtitle">All uploaded photos from the photobooth</p>
+
+    <div class="auth-section" id="authSection">
+      <h2>Admin Login</h2>
+      <input type="email" id="emailInput" placeholder="Email" />
+      <input type="password" id="passwordInput" placeholder="Password" />
+      <button id="loginBtn">Login</button>
+      <p class="error-message" id="errorMessage"></p>
+    </div>
+
+    <div class="gallery-section" id="gallerySection" style="display: none;">
+      <div class="controls">
+        <button id="refreshBtn">Refresh</button>
+        <button id="logoutBtn">Logout</button>
+      </div>
+      <div class="photo-grid" id="photoGrid">
+        <p class="loading">Loading photos...</p>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="Javascripts/admin.js"></script>
+</body>
+</html>
