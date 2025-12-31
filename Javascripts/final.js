@@ -132,9 +132,11 @@ downloadBtn.addEventListener('click', async () => {
     });
 
     if (response.ok) {
-      alert('Can go to counter For Rm 10 per pieces');
       downloadBtn.textContent = 'Sent!';
-      setTimeout(() => window.location.href = 'index.html', 1500);
+      const confirmed = confirm('Can go to counter For Rm 10 per pieces');
+      if (confirmed) {
+        window.location.href = 'index.html';
+      }
     } else {
       throw new Error('Upload failed');
     }
