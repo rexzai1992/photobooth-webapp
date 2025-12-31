@@ -31,10 +31,9 @@ An underwater-themed photobooth web application built with vanilla HTML, CSS, an
 ### Admin Access
 To view and download uploaded photos:
 1. Navigate to `/admin.html` in your browser
-2. Login with your Supabase credentials
-3. View all uploaded photos, download them, and mark them as printed
+2. View all uploaded photos, download them for printing, and mark them as printed
 
-Photos are stored in a Supabase database and can be accessed from any device.
+Photos are stored in a Supabase database and can be accessed from any device with the admin link.
 
 ## License
 
