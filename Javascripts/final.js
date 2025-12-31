@@ -1,3 +1,5 @@
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js';
+
 // constants
 const WIDTH = 1176, HEIGHT = 1470;
 
@@ -119,11 +121,11 @@ downloadBtn.addEventListener('click', async () => {
   try {
     const imageData = canvas.toDataURL('image/png');
 
-    const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/photos`, {
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/photos`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'apikey': import.meta.env.VITE_SUPABASE_ANON_KEY,
+        'apikey': SUPABASE_ANON_KEY,
         'Prefer': 'return=minimal'
       },
       body: JSON.stringify({ image_data: imageData })
