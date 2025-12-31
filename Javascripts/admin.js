@@ -3,70 +3,8 @@ import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js';
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-const authSection = document.getElementById('authSection');
-const gallerySection = document.getElementById('gallerySection');
-const emailInput = document.getElementById('emailInput');
-const passwordInput = document.getElementById('passwordInput');
-const loginBtn = document.getElementById('loginBtn');
-const errorMessage = document.getElementById('errorMessage');
 const photoGrid = document.getElementById('photoGrid');
 const refreshBtn = document.getElementById('refreshBtn');
-const logoutBtn = document.getElementById('logoutBtn');
-
-async function checkSession() {
-  const { data: { session } } = await supabase.auth.getSession();
-  if (session) {
-    showGallery();
-    loadPhotos();
-  }
-}
-
-loginBtn.addEventListener('click', async () => {
-  const email = emailInput.value.trim();
-  const password = passwordInput.value.trim();
-
-  if (!email || !password) {
-    errorMessage.textContent = 'Please enter email and password';
-    return;
-  }
-
-  loginBtn.disabled = true;
-  loginBtn.textContent = 'Logging in...';
-  errorMessage.textContent = '';
-
-  try {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password
-    });
-
-    if (error) throw error;
-
-    showGallery();
-    loadPhotos();
-  } catch (error) {
-    errorMessage.textContent = error.message;
-    loginBtn.disabled = false;
-    loginBtn.textContent = 'Login';
-  }
-});
-
-logoutBtn.addEventListener('click', async () => {
-  await supabase.auth.signOut();
-  showLogin();
-});
-
-function showGallery() {
-  authSection.style.display = 'none';
-  gallerySection.style.display = 'block';
-}
-
-function showLogin() {
-  authSection.style.display = 'block';
-  gallerySection.style.display = 'none';
-  emailInput.value = '';
-  passwordInput.value = '';
-}
 
 async function loadPhotos() {
   photoGrid.innerHTML = '<p class="loading">Loading photos...</p>';
@@ -134,4 +72,4 @@ document.querySelector('.logo').addEventListener('click', () => {
   window.location.href = 'index.html';
 });
 
-checkSession();
+loadPhotos();
